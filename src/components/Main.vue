@@ -21,11 +21,11 @@ export default {
         //Metodo per cercare le carte
         fetchCards() {
             //Effettuo la chiamata alla API
-            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=" + this.store.stop + "&offset=" + this.store.start)
             .then((res) => {
                 const info = res.data.data; //informazioni prese dall'API
                 //Ciclo
-                for (let i = this.store.start; i < this.store.stop; i++) {
+                for (let i = 0; i < info.length; i++) {
                     //Creo un oggetto
                     let input = {
                         imgSrc: info[i].card_images[0].image_url, //immagine presa dall'API
