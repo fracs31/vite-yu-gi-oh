@@ -10,6 +10,14 @@ export default {
     components: {
         Card, //carta
     },
+    //Data
+    data() {
+        return {
+            start: 0, //numero da cui si parte a cercare le carte
+            stop: 8, //numero in cui ci si ferma a cercare le carte
+            data: [], //dati presi dall'API
+        }
+    },
     //Metodi
     methods: {
         //Metodo per cercare le carte
@@ -17,7 +25,17 @@ export default {
             //Effettuo la chiamata alla API
             axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
             .then((res) => {
-                console.log(res);
+                const info = res.data.data; //informazioni prese dall'API
+                //Ciclo
+                for (let i = this.start; i < this.stop; i++) {
+                    //Creo un oggetto
+                    let input = {
+                        imgSrc: info[i].card_images[0].image_url, //immagine presa dall'API
+                        fullName: info[i].name, //nome preso dall'API
+                        archetype: info[i].archetype, //archetipo preso dall'API
+                    };
+                    this.data.push(input); //inserisco l'oggetto dentro l'array di dati
+                }
             });
         }
     },
@@ -26,7 +44,6 @@ export default {
         this.fetchCards(); //cerco le carte
     }
 }
-
 
 </script>
 
@@ -57,9 +74,9 @@ export default {
                     <!-- Lista -->
                     <ul class="list">
                         <!-- Elemento della lista -->
-                        <li class="list-item">
+                        <li class="list-item" v-for="(element) in data">
                             <!-- Carta -->
-                            <Card v-bind:imgSrc="'../src/assets/img/card-test.png'" v-bind:name="'Mostro'" v-bind:archetype="'Alieno'"></Card>
+                            <Card v-bind:imgSrc="element.imgSrc" v-bind:fullName="element.fullName" v-bind:archetype="element.archetype"></Card>
                         </li>
                     </ul>
                 </div>

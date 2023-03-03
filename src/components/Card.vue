@@ -6,7 +6,7 @@ export default {
     //Props
     props: {
         imgSrc: String, //immagine
-        name: String, //nome
+        fullName: String, //nome
         archetype: String, //archetipo
     }
 };
@@ -20,13 +20,13 @@ export default {
         <!-- Immagine della carta -->
         <div class="card__img">
             <!-- Immagine -->
-            <img class="card__img--img" v-bind:src="imgSrc" v-bind:alt="name">
+            <img class="card__img--img" v-bind:src="imgSrc" v-bind:alt="fullName">
         </div>
         <!-- Nome della carta -->
         <div class="card__name">
             <!-- Nome -->
             <h3 class="card__name--name">
-                {{ name }}
+                {{ fullName }}
             </h3>
         </div>
         <!-- Archetipo della carta -->
@@ -45,6 +45,7 @@ export default {
     .card {
         background-color: #D48F38;
         width: 240px;
+        height: 100%;
     }
     /* Immagine della carta utilizzata */
     .card__img--img {
