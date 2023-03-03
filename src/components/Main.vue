@@ -2,7 +2,7 @@
 <script>
 import Card from "./Card.vue"; //importo la carta
 import axios from "axios"; //importo axios
-
+import store from "../store.js"; //importo lo store
 
 //Esporto
 export default {
@@ -10,12 +10,10 @@ export default {
     components: {
         Card, //carta
     },
-    //Data
+    //Dati
     data() {
         return {
-            start: 0, //numero da cui si parte a cercare le carte
-            stop: 8, //numero in cui ci si ferma a cercare le carte
-            data: [], //dati presi dall'API
+            store, //store
         }
     },
     //Metodi
@@ -27,14 +25,14 @@ export default {
             .then((res) => {
                 const info = res.data.data; //informazioni prese dall'API
                 //Ciclo
-                for (let i = this.start; i < this.stop; i++) {
+                for (let i = this.store.start; i < this.store.stop; i++) {
                     //Creo un oggetto
                     let input = {
                         imgSrc: info[i].card_images[0].image_url, //immagine presa dall'API
                         fullName: info[i].name, //nome preso dall'API
                         archetype: info[i].archetype, //archetipo preso dall'API
                     };
-                    this.data.push(input); //inserisco l'oggetto dentro l'array di dati
+                    this.store.data.push(input); //inserisco l'oggetto dentro l'array di dati
                 }
             });
         }
@@ -74,7 +72,7 @@ export default {
                     <!-- Lista -->
                     <ul class="list">
                         <!-- Elemento della lista -->
-                        <li class="list-item" v-for="(element) in data">
+                        <li class="list-item" v-for="(element) in store.data">
                             <!-- Carta -->
                             <Card v-bind:imgSrc="element.imgSrc" v-bind:fullName="element.fullName" v-bind:archetype="element.archetype"></Card>
                         </li>
