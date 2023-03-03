@@ -30,28 +30,7 @@
                     <ul class="list">
                         <!-- Elemento della lista -->
                         <li class="list-item">
-                            <!-- Carta -->
-                            <div class="card">
-                                <!-- Immagine della carta -->
-                                <div class="card__img">
-                                    <!-- Immagine -->
-                                    <img class="card__img--img" src="../assets/img/card-test.png" alt="Test">
-                                </div>
-                                <!-- Nome della carta -->
-                                <div class="card__name">
-                                    <!-- Nome -->
-                                    <h3 class="card__name--name">
-                                        Dark Master - Zorc
-                                    </h3>
-                                </div>
-                                <!-- Archetipo della carta -->
-                                <div class="card__archetype">
-                                    <!-- Archetipo -->
-                                    <h4 class="card__archetype--archetype">
-                                        Archetipo
-                                    </h4>
-                                </div>
-                            </div>
+                            
                         </li>
                     </ul>
                 </div>
@@ -98,30 +77,5 @@
         display: flex;
         flex-wrap: wrap;
         gap: 25px 35px;
-    }
-    /* Carta */
-    .card {
-        background-color: #D48F38;
-        width: 240px;
-    }
-    /* Immagine della carta utilizzata */
-    .card__img--img {
-        width: 100%;
-        object-fit: contain;
-    }
-    /* Nome della carta utilzzato */
-    .card__name--name {
-        color: white;
-        text-transform: uppercase;
-        text-align: center;
-        padding: 10px 0px;
-        font-size: 20px;
-    }
-    /* Archetipo della carta utilizzato */
-    .card__archetype--archetype {
-        color: black;
-        text-align: center;
-        padding: 10px 0px;
-        font-size: 18px;
     }   
 </style>
