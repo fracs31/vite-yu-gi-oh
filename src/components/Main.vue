@@ -1,5 +1,16 @@
 <!-- JavaScript -->
 <script>
+import Card from "./Card.vue"; //importo la carta
+
+//Esporto
+export default {
+    //Componenti
+    components: {
+        Card, //carta
+    }
+}
+
+
 </script>
 
 <!-- Template -->
@@ -30,7 +41,8 @@
                     <ul class="list">
                         <!-- Elemento della lista -->
                         <li class="list-item">
-                            
+                            <!-- Carta -->
+                            <Card v-bind:imgSrc="'../src/assets/img/card-test.png'" v-bind:name="'Mostro'" v-bind:archetype="'Alieno'"></Card>
                         </li>
                     </ul>
                 </div>
