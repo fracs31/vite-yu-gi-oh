@@ -1,12 +1,29 @@
 <!-- JavaScript -->
 <script>
 import Card from "./Card.vue"; //importo la carta
+import axios from "axios"; //importo axios
+
 
 //Esporto
 export default {
     //Componenti
     components: {
         Card, //carta
+    },
+    //Metodi
+    methods: {
+        //Metodo per cercare le carte
+        fetchCards() {
+            //Effettuo la chiamata alla API
+            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+            .then((res) => {
+                console.log(res);
+            });
+        }
+    },
+    //Created
+    created() {
+        this.fetchCards(); //cerco le carte
     }
 }
 
