@@ -63,6 +63,7 @@ export default {
             <div class="content">
                 <!-- Numero risultati -->
                 <div class="number">
+                    <!-- Sottotitolo -->
                     <h2 class="number__title">
                         Found 39 cards
                     </h2>
@@ -122,6 +123,7 @@ export default {
         flex-wrap: wrap;
         gap: 25px 35px;
     }
+    /* Elementi della lista */
     .list-item {
         flex-basis: calc((100% / 4) - (35px * (3 / 4)));
     }
