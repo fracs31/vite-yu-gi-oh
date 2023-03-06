@@ -1,5 +1,16 @@
 <!-- JavaScript -->
 <script>
+import store from "../store.js"; //importo lo store
+
+//Esporto
+export default {
+    //Dati
+    data() {
+        return {
+            store, //store
+        }
+    }
+}
 
 </script>
 
@@ -8,7 +19,7 @@
     <!-- Filtro -->
     <div class="filter">
         <!-- Input -->
-        <input class="input" type="text" placeholder="Inserire il nome della carta">
+        <input class="input" type="text" placeholder="Inserire il nome della carta" v-model="store.fname" v-on:keyup.enter="$emit('search')">
         <!-- Select -->
         <select class="select">
             <!-- Opzione -->

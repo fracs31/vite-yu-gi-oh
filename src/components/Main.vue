@@ -33,6 +33,7 @@ export default {
             })
             .then((res) => {
                 const info = res.data.data; //informazioni prese dall'API
+                this.store.data = []; //resetto l'array di carte
                 //Ciclo
                 for (let i = 0; i < info.length; i++) {
                     //Creo un oggetto
@@ -43,6 +44,12 @@ export default {
                     };
                     this.store.data.push(input); //inserisco l'oggetto dentro l'array di dati
                 }
+            }).catch((error) => {
+                console.log(error); //stampo l'errore
+                this.store.data = []; //azzero l'array delle carte
+                this.store.stop = 0; //azzero il numero di elementi da mostrare
+                this.store.start = 0; //azzero il punto di inizio
+                this.store.fname = ""; //azzero la ricerca
             });
         }
     },
@@ -61,7 +68,7 @@ export default {
         <!-- Container -->
         <div class="container">
             <!-- Filtro -->
-            <Filter></Filter>
+            <Filter v-on:search="fetchCards()"></Filter>
             <!-- Contenuto -->
             <div class="content">
                 <!-- Numero risultati -->
