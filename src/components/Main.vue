@@ -1,6 +1,7 @@
 <!-- JavaScript -->
 <script>
 import Card from "./Card.vue"; //importo la carta
+import Filter from "./Filter.vue"; //importo il filtro
 import axios from "axios"; //importo axios
 import store from "../store.js"; //importo lo store
 
@@ -9,6 +10,7 @@ export default {
     //Componenti
     components: {
         Card, //carta
+        Filter, //filtro
     },
     //Dati
     data() {
@@ -21,7 +23,14 @@ export default {
         //Metodo per cercare le carte
         fetchCards() {
             //Effettuo la chiamata alla API
-            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=" + this.store.stop + "&offset=" + this.store.start)
+            axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
+                //Parametri
+                params: {
+                    num: this.store.stop, //numero di elementi da mostrare
+                    offset: this.store.start, //numero da cui partire,
+                    fname: this.store.fname, //nome della carta
+                }
+            })
             .then((res) => {
                 const info = res.data.data; //informazioni prese dall'API
                 //Ciclo
@@ -52,15 +61,7 @@ export default {
         <!-- Container -->
         <div class="container">
             <!-- Filtro -->
-            <div class="filter">
-                <!-- Input -->
-                <input class="input" type="text" placeholder="Inserire il nome della carta">
-                <!-- Select -->
-                <select class="select">
-                    <!-- Opzione -->
-                    <option value="Alien">Alien</option>
-                </select>
-            </div>
+            <Filter></Filter>
             <!-- Contenuto -->
             <div class="content">
                 <!-- Numero risultati -->
@@ -91,27 +92,6 @@ export default {
     /* Main */
     .main-content {
         background-color: #D48F38;
-    }
-    /* Filtro */
-    .filter {
-        padding: 35px 20px;
-        display: flex;
-        gap: 15px;
-    }
-    /* Input */
-    .input {
-        flex-grow: 1;
-        font-size: 16px;
-        padding: 10px;
-    }
-    /* Select */
-    .select {
-        background-color: white;
-        font-size: 16px;
-        width: 150px;
-        border-radius: 8px;
-        padding: 10px;
-        cursor: pointer;
     }
     /* Contenuto */
     .content {
