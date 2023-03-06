@@ -121,5 +121,8 @@ export default {
         display: flex;
         flex-wrap: wrap;
         gap: 25px 35px;
-    }   
+    }
+    .list-item {
+        flex-basis: calc((100% / 4) - (35px * (3 / 4)));
+    }
 </style>

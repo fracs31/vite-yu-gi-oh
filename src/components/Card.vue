@@ -44,7 +44,7 @@ export default {
     /* Carta */
     .card {
         background-color: #D48F38;
-        width: 240px;
+        width: 100%;
         height: 100%;
     }
     /* Immagine della carta utilizzata */
