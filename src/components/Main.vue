@@ -47,8 +47,6 @@ export default {
             }).catch((error) => {
                 console.log(error); //stampo l'errore
                 this.store.data = []; //azzero l'array delle carte
-                this.store.stop = 0; //azzero il numero di elementi da mostrare
-                this.store.start = 0; //azzero il punto di inizio
                 this.store.fname = ""; //azzero la ricerca
             });
         }
