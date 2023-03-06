@@ -53,6 +53,8 @@ export default {
         <div class="container">
             <!-- Filtro -->
             <div class="filter">
+                <!-- Input -->
+                <input class="input" type="text" placeholder="Inserire il nome della carta">
                 <!-- Select -->
                 <select class="select">
                     <!-- Opzione -->
@@ -93,6 +95,14 @@ export default {
     /* Filtro */
     .filter {
         padding: 35px 20px;
+        display: flex;
+        gap: 15px;
+    }
+    /* Input */
+    .input {
+        flex-grow: 1;
+        font-size: 16px;
+        padding: 10px;
     }
     /* Select */
     .select {
@@ -125,6 +135,6 @@ export default {
     }
     /* Elementi della lista */
     .list-item {
-        flex-basis: calc((100% / 4) - (35px * (3 / 4)));
+        width: calc((100% / 4) - (35px * (3 / 4)));
     }
 </style>
